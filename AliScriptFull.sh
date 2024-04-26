@@ -3,7 +3,7 @@
 --------------------------------------------------------------------------------------
 #!/bin/bash
 
-anthreads=(1 10)        #number of threads the scrips is using
+anthreads=(1 5 10)        #number of threads the scrips is using
 anseq=$(ls /LETHE/COURSES/HPC24SS/AliScale/query)   #number of sequences that is used, query_1.fa, query_8.fa, query_16.fa contain 1, 8 and 16 sequences respectively
 adbsize=$(ls /LETHE/COURSES/HPC24SS/AliScale/references)    #size of database, contains databases of different sizes
 
@@ -42,3 +42,16 @@ time2=$(date +%s)   #timepoint after search is done
 time_elapsed=($time2 - $time1)  #calculates time the search takes by substracting time point after and before
 
 echo "$time_elapsed; $1; $2; $3" >> results.txt     #safes resulting time and parameters in text file
+
+
+
+install.packages("ggplot2")
+library(ggplot2)
+
+daten <- readtable("/Users/ra67jul/HPC/Alignmentscript/results_combined.csv", sep=";")
+
+ggplot(daten, aes(x=V4, y=V1, col=V5, shape="V2"))+
+    geom_point(size=5)+
+    scale_y_log10()
+    scale_x_log10()
+    geom_smooth()
