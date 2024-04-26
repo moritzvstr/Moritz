@@ -18,12 +18,12 @@ df_nohead.to_csv('results_combined2.csv', header=headerList, index=False)
 df = pd.read_csv('results_combined2.csv') 
 
 print(df.head())
-print(df['Time'].head())
+#print(df['Time'].head())
 
 
 
 
-plt.scatter(df['dbsize'], df['Time'], label = 'test')
+df.plot.scatter(x='dbsize', y='Time', c='seqlen', cmap='viridis', s=df['type'])
 plt.xlabel('dbsize')
 plt.ylabel('Time')
 plt.title('test')
