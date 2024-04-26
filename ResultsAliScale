@@ -1,0 +1,10 @@
+install.packages("ggplot2")
+library(ggplot2)
+
+daten <- readtable("/Users/ra67jul/HPC/Alignmentscript/results_combined.csv", sep=";")
+
+ggplot(daten, aes(x=V4, y=V1, col=V5, shape="V2"))+
+    geom_point(size=5)+
+    scale_y_log10()
+    scale_x_log10()
+    geom_smooth()
