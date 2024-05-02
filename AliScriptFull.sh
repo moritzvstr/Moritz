@@ -1,3 +1,5 @@
+'''bash
+
 --------------------------------------------------------------------------------------
 ##AliScript.sh
 --------------------------------------------------------------------------------------
@@ -40,6 +42,8 @@ vsearch --usearch_global /LETHE/COURSES/HPC24SS/AliScale/query/$2 --db /LETHE/CO
 
 time2=$(date +%s)   #timepoint after search is done
 time_elapsed=($time2 - $time1)  #calculates time the search takes by substracting time point after and before
+
+'''
 
 echo "$time_elapsed; $1; $2; $3" >> results.txt     #safes resulting time and parameters in text file
 
