@@ -21,4 +21,8 @@ gunzip $datadir/$index/*.gz         #unzip file
 #Number genes
     ngenes=$(grep -i "gene" $datadir/$index/*.gff | wc -m)
 
-echo "$2; $tot_count; $ngenes; $gc_content" >> results_bac_xae.csv
+#Phylum name
+    id=$(grep -i "##species" $datadir/$index/*.gff | head -n 1 | cut -d"=" -f2)
+    phylum=$(docker run --rm ncbi/edirect  /bin/bash -c  "efetch -db taxonomy -id $id -format xml | xtract -pattern Taxon -block '*/Taxon' -tab '\n'  -element Id,Rank,TaxId,ScientificName" | grep "phylum" | cut -f 3)
+
+echo "$2; $tot_count; $ngenes; $gc_content; $phylum" >> results2_bac_xae.csv

@@ -1,6 +1,6 @@
 #!/bin/bash/
 
-rm results_bac_xae.csv
+rm results2_bac_xae.csv
 
 workdir=$(cat "/LETHE/COURSES/Moritz/Bactgenome/xae")
 datadir="/LETHE/COURSES/data/bac_genomes/refseq/bacteria"
@@ -8,7 +8,7 @@ datadir="/LETHE/COURSES/data/bac_genomes/refseq/bacteria"
 
 for index in $workdir;
     do 
-    sleep 0.1
+    sleep 0.3
     srun -c 1 bash BacGenScript.sh $datadir $index &
     
 
