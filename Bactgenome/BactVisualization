@@ -7,11 +7,10 @@ daten <- read.table("/Users/ra67jul/HPC/BacteriaGenome/results_bac_xae.csv", sep
 head(daten)
 
 ggplot(daten, aes(x=V2, y=V3, col=V4))+
-  geom_point(colour = "grey90", size=1.5)+
+  geom_point(size=1.5)+
   scale_y_log10()+
   scale_x_log10()+
   scale_shape_manual(values = 0:10)+
-  geom_point()+
   xlab("genome lenght")+
   ylab("number of genes")+
   theme_bw()
